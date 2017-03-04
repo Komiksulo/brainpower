@@ -7,7 +7,7 @@ $user_agent = getenv("HTTP_USER_AGENT");
 if(strpos($user_agent, "Mac") !== FALSE){
 	$path = "/Applications/MAMP/htdocs/brainpower/img/";
 } else {
-	$path = "/var/www/html/";
+	$path = "/var/www/html/img/";
 }
 file_put_contents($path. $id .'.png', base64_decode($img));
 ?>
