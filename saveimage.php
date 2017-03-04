@@ -9,5 +9,6 @@ if(strpos($server_agent, "Darwin") !== FALSE){
 } else {
 	$path = "/var/www/html/img/";
 }
+var_dump($server_agent);
 file_put_contents($path. $id .'.png', base64_decode($img));
 ?>
