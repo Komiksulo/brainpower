@@ -9,6 +9,6 @@ if(strpos($user_agent, "Mac") !== FALSE){
 } else {
 	$path = "/var/www/html/img/";
 }
-var_dump($path);
+var_dump($user_agent);
 file_put_contents($path. $id .'.png', base64_decode($img));
 ?>
