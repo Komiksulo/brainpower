@@ -57,12 +57,14 @@ function stopVideo(){
 	$("#videoplayer").get(0).stop();
 }
  
-
+var doneRemoved = 0;
 function eventDone(eventId){
 	$.get("eventdone.php?id="+eventId);
 	$("#done"+eventId).hide();
 	//$(".sections").slick("slickNext");
 	$(".sections").slick('slickRemove',0);
+	doneRemoved += 1;
+	$(".done"+doneRemoved).show();
 }
 
 
@@ -72,12 +74,14 @@ $(document).ready(function(){
  function appendListItem(target, eventId){
  	$.get("loadscheduledevents.php?id="+eventId, function(data){
  		var eventInfos = JSON.parse(data);
+ 		var doneCount = 0;
  		for(var key in eventInfos){
  			var eventInfo = eventInfos[key];
 	 		var done = "";
 	 		if(eventInfo.done == null){
-	 			done = "<div id='done"+eventInfo.listeventid+"'><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
+	 			done = "<div style='display:none;' class='done"+doneCount+"' id='done"+eventInfo.listeventid+"'><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
 	 		}
+	 		doneCount += 1;
 	 		var image = "";
 	 		if(eventInfo.image != ""){
 	 			image = "<img class='image' src='img/"+eventInfo.image+"' alt='"+eventInfo.name+"'>";
@@ -112,7 +116,7 @@ $(document).ready(function(){
  		$('.sections').slick({
 		  slidesToShow: 3
 		});
-
+ 		$(".done0").show();
  	});
  }
 appendListItem("sections", -1);
