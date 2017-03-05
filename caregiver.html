@@ -15,14 +15,17 @@
 			<h1>Care Giver</h1>
 			<div class="content_container">
 				<div class="left_side">
+
 					<!-- Calendar goes here -->
-					<div class="list_item">
-						An event or a task goes here.
+          <div>Completed Items</div>
+					<div id="doneitems">
 					</div>
-					<div class="list_item">
-						An event or a task goes here.
+          <br>
+          <div>Sheduled Items</div>
+					<div id="futureitems">
+						
 					</div>
-					<a href="buildlist.php">Add New List Items</a>
+					
 				</div>
 				<div class="right_side">
 					<div>
@@ -80,6 +83,23 @@
           });
         });
           </script>
+          <script>
+            $.get("donetasks.php", function(data){
+              var doneTasks = JSON.parse(data);
+              for(var doneKey in doneTasks){
+                var doneTask = doneTasks[doneKey];
+                $("#doneitems").append("<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>");
+              }
+            });
+            $.get("loadscheduledevents.php", function(data){
+              var sheduledTasks = JSON.parse(data);
+              for(var scheduledKey in sheduledTasks){
+                var sheduledTask = sheduledTasks[scheduledKey];
+                $("#futureitems").append("<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>");
+              }
+            });
+          </script>
+
 			</div>
 		</div>
 	</body>

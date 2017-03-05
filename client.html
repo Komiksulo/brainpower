@@ -5,7 +5,11 @@
 	<link rel="stylesheet" type="text/css" href="slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
 	<style>
-		
+		#SkypeButton_Call_gooface_1{
+			position: fixed;
+			right: 0px;
+			top: 0px;
+		}
 		#call{
 			position: fixed;
 			top: 0px;
@@ -124,5 +128,17 @@ appendListItem("sections", -1);
   
 });
 </script>
+
+	
+	<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_gooface_1">
+	 <script type="text/javascript">
+		 Skype.ui({
+		 "name": "call",
+		 "element": "SkypeButton_Call_gooface_1",
+		 "participants": ["gooface"],
+		 "imageSize": 32
+		 });
+	 </script>
 </body>
 </html>
