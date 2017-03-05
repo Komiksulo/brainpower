@@ -3,6 +3,22 @@
 /* All screens */
 
 
+div.skype {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background-image: url("../img/red_circle.png");
+    background-position: left bottom;
+}
+
+/* main title */
+
+h1 {
+	font-family: "arial", "helvetica", sans-serif;
+	font-size: 40px;
+	font-style: italic;
+	text-align: center;
+}
 
 
 /* Caregiver screen */
