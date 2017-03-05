@@ -1,39 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    .skype{
-      position: fixed;
-      top: 0px;
-      right: 0px;
-    }
-  </style>
-</head>
-
-<body>
-Care Giver
-<a href="buildlist.php">Add New List Items</a>
-<div class="skype">
-<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
-<div id="SkypeButton_Call_gooface_1">
- <script type="text/javascript">
- Skype.ui({
- "name": "call",
- "element": "SkypeButton_Call_gooface_1",
- "participants": ["gooface"],
- "imageSize": 32
- });
- </script>
-<script src="js/jquery-3.1.1.min.js"></script>
-<script>
-$.get("loadEvent.php?id="+eventId, function(data){
-    var eventInfos = JSON.parse(data);
-    for(var key in eventInfos){
-      var eventInfo = eventInfos[key];
-      console.log(eventInfo);
-    }
-});
-</script>
-</div>
-</body>
+	<head>
+	  <style>
+	    .skype{
+	      position: fixed;
+	      top: 0px;
+	      right: 0px;
+	    }
+	  </style>
+	</head>
+	<body>
+		<div class="main_container">
+			<h1>Care Giver</h1>
+			<a href="buildlist.php">Add New List Items</a>
+			<div class="left_side">
+				<!-- Calendar goes here -->
+			</div>
+			<div class="right side">
+				<!-- Data entry pages go here -->
+        <div>
+          <input type="button" value="Create Event">
+        </div>
+        <div>
+          <select id="event"></select>
+        </div>
+        <div>
+        <input type="button" value="Add Sub Event">
+      </div>
+        <div>
+        <input type="button" value="Edit Event">
+      </div>
+      <div>
+        <input type="button" value="Schedule Event">
+      </div>
+      <div>
+        <input type="button" value="Remove Event">
+      </div>
+			</div>
+			<div class="skype">
+				<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+			<div id="SkypeButton_Call_gooface_1">
+				 <script type="text/javascript">
+					 Skype.ui({
+					 "name": "call",
+					 "element": "SkypeButton_Call_gooface_1",
+					 "participants": ["gooface"],
+					 "imageSize": 32
+					 });
+				 </script>
+         <script src="js/jquery-3.1.1.min.js"></script>
+         <script>
+         $(function() {
+          $.get("loadEvent.php?id=-1", function(data){
+              var eventInfos = JSON.parse(data);
+              for(var key in eventInfos){
+                var eventInfo = eventInfos[key];
+                $("#event").append("<option value='"+eventInfo.id+"'>"+eventInfo.name+"<option>");
+              }
+          });
+        });
+          </script>
+			</div>
+		</div>
+	</body>
 </html>
