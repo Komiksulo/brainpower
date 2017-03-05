@@ -24,6 +24,16 @@ Care Giver
  "imageSize": 32
  });
  </script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$.get("loadEvent.php?id="+eventId, function(data){
+    var eventInfos = JSON.parse(data);
+    for(var key in eventInfos){
+      var eventInfo = eventInfos[key];
+      console.log(eventInfo);
+    }
+});
+</script>
 </div>
 </body>
 </html>
