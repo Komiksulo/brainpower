@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    .skype{
-      position: fixed;
-      top: 0px;
-      right: 0px;
-    }
-  </style>
-</head>
+	<head>
+	  <style>
+	    .skype{
+	      position: fixed;
+	      top: 0px;
+	      right: 0px;
+	    }
+	  </style>
+	</head>
 
-<body>
-Care Giver
-<a href="buildlist.php">Add New List Items</a>
-<div class="skype">
-<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
-<div id="SkypeButton_Call_gooface_1">
- <script type="text/javascript">
- Skype.ui({
- "name": "call",
- "element": "SkypeButton_Call_gooface_1",
- "participants": ["gooface"],
- "imageSize": 32
- });
- </script>
-</div>
-</body>
+	<body>
+		<div class="main_container">
+			<h1>Care Giver</h1>
+			<a href="buildlist.php">Add New List Items</a>
+			<div class="left_side">
+				<!-- Calendar goes here -->
+			</div>
+			<div class="right side">
+				<!-- Data entry pages go here -->
+			</div>
+			<div class="skype">
+				<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+			<div id="SkypeButton_Call_gooface_1">
+				 <script type="text/javascript">
+					 Skype.ui({
+					 "name": "call",
+					 "element": "SkypeButton_Call_gooface_1",
+					 "participants": ["gooface"],
+					 "imageSize": 32
+					 });
+				 </script>
+			</div>
+		</div>
+	</body>
 </html>
