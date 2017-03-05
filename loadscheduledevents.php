@@ -9,7 +9,7 @@ if(strpos($server_agent, "Darwin") !== FALSE){
 }
 $conn = mysqli_connect($servername, $username, $password, "mysql");
 
-$sql = "SELECT listsevent.id as listEventid, lists.id as id, name, description, image, video, audio, date, time, done, help FROM listsevent join lists on listid = lists.id where done is null order by time, date";
+$sql = "SELECT listsEvent.id as listeventid, lists.id as id, name, description, image, video, audio, date, time, done, help FROM listsEvent join lists on listid = lists.id where done is null order by time, date";
 $resultQuery = mysqli_query($conn, $sql);
 $results = [];
 while ($row = $resultQuery->fetch_object()){
