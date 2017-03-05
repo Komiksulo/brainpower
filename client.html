@@ -42,7 +42,10 @@
 	<div>
 <div class="sections" id="sections">
 </div>
+<div id="history" style="border: 4px solid black;">
+<div>History</div>
 <div id="doneitems"></div>
+</div>
 
 
 <script src="js/jquery-3.1.1.min.js"></script>
@@ -80,6 +83,7 @@ $(document).ready(function(){
  	$.get("loadscheduledevents.php?id="+eventId, function(data){
  		var eventInfos = JSON.parse(data);
  		var doneCount = 0;
+ 		var eventString = "";
  		for(var key in eventInfos){
  			var eventInfo = eventInfos[key];
 	 		var done = "";
@@ -115,9 +119,9 @@ $(document).ready(function(){
 	 		if(eventInfo.date != ""){
 	 			date = eventInfo.date;
 	 		}
-	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"<div class='eventtime'>"+time+"</div><div class='eventdate'>"+date+"</div></div></div>");
+	 		eventString += "<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"<div class='eventtime'>"+time+"</div><div class='eventdate'>"+date+"</div></div></div>";
  		}
- 		
+ 		$("#"+target).html(eventString);
  		$('.sections').slick({
 		  slidesToShow: 3
 		});
@@ -128,14 +132,21 @@ appendListItem("sections", -1);
  
   
 });
-
+function refresh(){
 $.get("donetasks.php", function(data){
   var doneTasks = JSON.parse(data);
+  var doneString = "";
   for(var doneKey in doneTasks){
     var doneTask = doneTasks[doneKey];
-    $("#doneitems").append("<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>");
+
+    doneString += "<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>";
+
   }
+  $("#doneitems").html(doneString);
+  setTimeout(refresh, 1000);
 });
+}
+refresh();
 </script>
 
 	

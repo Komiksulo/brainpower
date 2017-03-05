@@ -2,6 +2,18 @@
 <html>
 <head>
 <script src="js/jquery-3.1.1.min.js"></script>
+<style>
+  .label{
+  	display:inline-block;
+  	width: 125px;
+  }
+  #name{
+  	width: 200px;
+  }
+  #description{
+  	 width: 200px;
+  }
+</style>
 </head>
 <body>
 <form action="addlist.php" method="post" enctype="multipart/form-data">
@@ -34,7 +46,7 @@ function addToList(id){
 		echo("parent = '".$_GET['parent']."';");
 	}
 	?>
-	$("#"+id).append("<div>Title</div><div><input type='text' id='name' name='name'></div><div>Description</div><div><textarea name='description' id='description'></textarea></div> <div>Use Camera <input type='button' value='Take Picture' onclick='window.open(\"recordimage.php?id="+imageId+"\", \"_blank\"); isImageDone();'> <span id='imageplaceholder'>No picture</span></div> Upload Image <input type='file' name='image'> </div><input type='hidden' id='hiddenimage' name='hiddenimage'><input type='hidden' name='parent' value='"+parent+"'> <div>Upload Video <input type='file' name='video'></div> <div>Upload Audio <input type='file' name='audio'></div>");
+	$("#"+id).append("<div>Title</div><div><input type='text' id='name' name='name'></div><div>Description</div><div><textarea name='description' id='description'></textarea></div> <div><span class='label'>Use Camera</span> <input type='button' value='Take Picture' onclick='window.open(\"recordimage.php?id="+imageId+"\", \"_blank\"); isImageDone();'> <span id='imageplaceholder'>No picture</span></div><span class='label'>Upload Image</span> <input type='file' name='image'> </div><input type='hidden' id='hiddenimage' name='hiddenimage'><input type='hidden' name='parent' value='"+parent+"'> <div><span class='label'>Upload Video</span> <input type='file' name='video'></div> <div><span class='label'>Upload Audio</span> <input type='file' name='audio'></div>");
 	counter += 1;
 }
 addToList("list0");

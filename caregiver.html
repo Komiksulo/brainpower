@@ -8,6 +8,9 @@
 	      top: 0px;
 	      right: 0px;
 	    }
+      input{
+        width: 150px;
+      }
 	  </style>
 	</head>
 	<body>
@@ -84,20 +87,29 @@
         });
           </script>
           <script>
+          function refresh(){
             $.get("donetasks.php", function(data){
               var doneTasks = JSON.parse(data);
+              var doneString = "";
               for(var doneKey in doneTasks){
                 var doneTask = doneTasks[doneKey];
-                $("#doneitems").append("<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>");
+                doneString += "<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>";
               }
+              $("#doneitems").html(doneString);
             });
             $.get("loadscheduledevents.php", function(data){
               var sheduledTasks = JSON.parse(data);
+              var futureString = "";
               for(var scheduledKey in sheduledTasks){
                 var sheduledTask = sheduledTasks[scheduledKey];
-                $("#futureitems").append("<div><span>"+sheduledTask.name+"</span> <span>"+sheduledTask.date+"</span> <span>"+sheduledTask.time+"</span></div>");
+                  futureString += "<div><span>"+sheduledTask.name+"</span> <span>"+sheduledTask.date+"</span> <span>"+sheduledTask.time+"</span></div>";
               }
+              $("#futureitems").html(futureString);
             });
+            setTimeout(refresh, 1000);
+          }
+          refresh();
+
           </script>
 
 			</div>
