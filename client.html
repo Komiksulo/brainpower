@@ -35,8 +35,10 @@
 	</style>
 </head>
 <body>
+	<div>
 <div class="sections" id="sections">
 </div>
+
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="slick/slick.js"></script>
@@ -59,7 +61,8 @@ function stopVideo(){
 function eventDone(eventId){
 	$.get("eventdone.php?id="+eventId);
 	$("#done"+eventId).hide();
-	$(".sections").slick("slickNext");
+	//$(".sections").slick("slickNext");
+	$(".sections").slick('slickRemove',0);
 }
 
 
@@ -72,7 +75,6 @@ $(document).ready(function(){
  		for(var key in eventInfos){
  			var eventInfo = eventInfos[key];
 	 		var done = "";
-	 		console.log(eventInfo);
 	 		if(eventInfo.done == null){
 	 			done = "<div id='done"+eventInfo.listeventid+"'><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
 	 		}
@@ -104,38 +106,12 @@ $(document).ready(function(){
 	 		if(eventInfo.date != ""){
 	 			date = eventInfo.date;
 	 		}
-	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"</div><div class='eventtime'>"+time+"</div><div class='eventdate'>"+date+"</div></div>");
+	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"<div class='eventtime'>"+time+"</div><div class='eventdate'>"+date+"</div></div></div>");
  		}
  		
  		$('.sections').slick({
- 		  draggable: false,
- 		  accessibility: false,
- 		  infinite: false,
-		  centerMode: true,
-		  centerPadding: '60px',
-		  slidesToShow: 3,
-		  responsive: [
-		    {
-		      breakpoint: 768,
-		      settings: {
-		        arrows: false,
-		        centerMode: true,
-		        centerPadding: '40px',
-		        slidesToShow: 3
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		        arrows: false,
-		        centerMode: true,
-		        centerPadding: '40px',
-		        slidesToShow: 1
-		      }
-		    }
-		  ]
+		  slidesToShow: 3
 		});
-		//$('.sections').slick("slickGoTo", 2, true);
 
  	});
  }
