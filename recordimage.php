@@ -25,11 +25,12 @@
 		  type: "POST",
 		  url: "saveimage.php",
 		  data: { 
-		     id: "testy",
+		     id: "<?php echo($_GET['id']); ?>",
 		     data: dataURL
 		  }
 		}).done(function(o) {
-		  console.log('saved'); 
+		  console.log('saved');
+		  window.close();
 		});
   });
 

@@ -2,7 +2,7 @@
 $img = $_REQUEST['data'];
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
-$id = uniqid();
+$id = $_REQUEST['id'];
 $server_agent = php_uname();
 if(strpos($server_agent, "Darwin") !== FALSE){
 	$path = "/Applications/MAMP/htdocs/brainpower/img/";
