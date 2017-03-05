@@ -10,7 +10,7 @@
 		$path = "/var/www/html/img/";
 	}
 	$conn = mysqli_connect($servername, $username, $password, "mysql");
-	$sql = "update listsevent set done = 'done' where id = '".$_GET['id']."' ";
+	$sql = "update listsEvent set done = 'done' where id = '".$_GET['id']."' ";
 	mysqli_query($conn, $sql);
 	mysqli_close($conn);
 	header('Location: '."caregiver.html");

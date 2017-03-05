@@ -10,7 +10,7 @@
 		$path = "/var/www/html/img/";
 	}
 	$conn = mysqli_connect($servername, $username, $password, "mysql");
-	$sql = "INSERT INTO listsevent (listid, date, time) values('".$_GET['id']."', '".$_GET['date']."', '".$_GET['time']."')";
+	$sql = "INSERT INTO listsEvent (listid, date, time) values('".$_GET['id']."', '".$_GET['date']."', '".$_GET['time']."')";
 	mysqli_query($conn, $sql);
 	mysqli_close($conn);
 	header('Location: '."caregiver.html");
