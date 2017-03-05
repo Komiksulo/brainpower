@@ -95,7 +95,7 @@
               var sheduledTasks = JSON.parse(data);
               for(var scheduledKey in sheduledTasks){
                 var sheduledTask = sheduledTasks[scheduledKey];
-                $("#futureitems").append("<div><span>"+doneTask.name+"</span> <span>"+doneTask.date+"</span> <span>"+doneTask.time+"</span></div>");
+                $("#futureitems").append("<div><span>"+sheduledTask.name+"</span> <span>"+sheduledTask.date+"</span> <span>"+sheduledTask.time+"</span></div>");
               }
             });
           </script>
