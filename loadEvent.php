@@ -24,6 +24,8 @@ while ($row = $resultQuery->fetch_object()){
 	$result['image'] = $row->image;
 	$result['audio'] = $row->audio;
 	$result['parent'] = $row->parent;
+	$result['time'] = "4:00 PM";
+	$result['date'] = "March 5, 2017";
 	$result['id'] = $row->id;
 	$results[] = $result;
 }

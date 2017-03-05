@@ -99,7 +99,15 @@ $(document).ready(function(){
 	 		if(eventInfo.audio != ""){
 	 			audio = '<video style="height:40px" id="audioplayer" controls><source src="img/'+eventInfo.audio+'" type="audio/webm"></video>';
 	 		}
-	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"</div></div>");
+	 		var time = "";
+	 		if(eventInfo.time != ""){
+	 			time = eventInfo.time;
+	 		}
+	 		var date = "";
+	 		if(eventInfo.date != ""){
+	 			date = eventInfo.date;
+	 		}
+	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"</div><div class='eventtime'>"+time+"</div><div class='eventdate'>"+date+"</div></div>");
  		}
  		
  		$('.sections').slick({
