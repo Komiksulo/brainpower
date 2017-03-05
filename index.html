@@ -17,11 +17,24 @@
 		.slick-slide img{
 			max-width: 200px;
 			max-height: 200px;
+			margin: 0px auto;
+		}
+		.sections{
+			font-size: 27px;
+			font-family: sans-serif;
+		}
+		.eventwrapper{
+			height: 400px;
+			text-align: center;
+		}
+		.skype{
+			position: fixed;
+			top: 0px;
+			right: 0px;
 		}
 	</style>
 </head>
 <body>
-
 <div class="sections" id="sections">
 </div>
 
@@ -42,9 +55,21 @@ DWS
 
 <script>
 
+function playVideo(){
+	$("#vids").hide();
+	$("#videoWrapper").show();
+	$("#videoplayer").get(0).play();
+}
 
+function stopVideo(){
+	$("#videoWrapper").hide();
+	$("#vids").show();
+	$("#videoplayer").get(0).stop();
+}
  
 $(document).ready(function(){
+
+
  function appendListItem(target, eventId, active){
  	$.get("loadEvent.php?id="+eventId, function(data){
  		var eventInfos = JSON.parse(data);
@@ -56,9 +81,25 @@ $(document).ready(function(){
 	 		}
 	 		var image = "";
 	 		if(eventInfo.image != ""){
-	 			image = "<img src='img/"+eventInfo.image+"' alt='"+eventInfo.name+"'>";
+	 			image = "<img class='image' src='img/"+eventInfo.image+"' alt='"+eventInfo.name+"'>";
 	 		}
-	 		$("#"+target).append("<div><div class='eventname'>"+eventInfo.name+"</div><div class='eventdescription'>"+eventInfo.description+"</div>"+image+"<div class='eventaudio'>"+eventInfo.audio+"</div><div class='eventvideo'>"+eventInfo.video+"</div>"+done+"</div>");
+	 		var name = "";
+	 		if(eventInfo.name != ""){
+	 			name = "<div class='eventname'>"+eventInfo.name+"</div>";
+	 		}
+	 		var description = "";
+	 		if(eventInfo.description != ""){
+	 			description = "<div class='eventdescription'>"+eventInfo.description+"</div>";
+	 		}
+	 		var video = "";
+	 		if(eventInfo.video != ""){
+	 			video = '<div id="vids"><input type="button" value="Play Video" onclick="playVideo();"></div><div id="videoWrapper" style="position:absolute; top:0px; left:0px; display:none;"><video id="videoplayer" controls><source src="img/'+eventInfo.video+'" type="video/webm"></video><input style="position:absolute; top:10px; right:10px" type="button" value="Close Video" onclick="stopVideo()"></div>';
+	 		}
+	 		var audio = "";
+	 		if(eventInfo.audio != ""){
+	 			audio = '<video style="height:40px" id="audioplayer" controls><source src="img/'+eventInfo.audio+'" type="audio/webm"></video>';
+	 		}
+	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"</div></div>");
  		}
  		
  		$('.sections').slick({
@@ -89,7 +130,7 @@ $(document).ready(function(){
 		    }
 		  ]
 		});
-		$('.sections').slick("slickGoTo", 3, true);
+		$('.sections').slick("slickGoTo", 2, true);
 
  	});
  }
