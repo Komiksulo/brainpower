@@ -58,6 +58,7 @@ function stopVideo(){
 
 function eventDone(eventId){
 	$.get("eventdone.php?id="+eventId);
+	$("#done"+eventId).hide();
 	$(".sections").slick("slickNext");
 }
 
@@ -73,7 +74,7 @@ $(document).ready(function(){
 	 		var done = "";
 	 		console.log(eventInfo);
 	 		if(eventInfo.done == null){
-	 			done = "<div><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
+	 			done = "<div id='done"+eventInfo.listeventid+"'><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
 	 		}
 	 		var image = "";
 	 		if(eventInfo.image != ""){
