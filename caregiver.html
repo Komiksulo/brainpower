@@ -12,29 +12,41 @@
 	<body>
 		<div class="main_container">
 			<h1>Care Giver</h1>
-			<a href="buildlist.php">Add New List Items</a>
 			<div class="left_side">
 				<!-- Calendar goes here -->
 			</div>
 			<div class="right side">
 				<!-- Data entry pages go here -->
         <div>
-          <input type="button" value="Create Event">
+          <input type="button" value="Create Event" onclick="window.location.href='buildlist.php';">
         </div>
         <div>
           <select id="event"></select>
         </div>
         <div>
-        <input type="button" value="Add Sub Event">
+        <input type="button" value="Add Sub Event" onclick="addSub()">
+        <script>
+        function addSub(){
+          window.location.href='buildlist.php?id='+$('#event').val();
+        }
+        function scheduleEvent(){
+          window.location.href='scheduleevent.php?id='+$("#event").val()+'&date='+$("#date").val()+'&time='+$("#time").val();
+        }
+        function removeEvent(){
+          window.location.href='removeevent.php?id='+$("#event").val();
+        }
+        </script>
       </div>
         <div>
         <input type="button" value="Edit Event">
       </div>
       <div>
-        <input type="button" value="Schedule Event">
+        <input id="date" type="date">
+        <input id="time" type="time">
+        <input type="button" value="Schedule Event" onclick="scheduleEvent();">
       </div>
       <div>
-        <input type="button" value="Remove Event">
+        <input type="button" value="Remove Event" onclick="removeEvent();">
       </div>
 			</div>
 			<div class="skype">
@@ -55,7 +67,8 @@
               var eventInfos = JSON.parse(data);
               for(var key in eventInfos){
                 var eventInfo = eventInfos[key];
-                $("#event").append("<option value='"+eventInfo.id+"'>"+eventInfo.name+"<option>");
+                $("#event").append("<option value='"+eventInfo.id+"'>"+eventInfo.name+"</option>");
+
               }
           });
         });

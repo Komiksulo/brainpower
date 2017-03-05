@@ -31,7 +31,7 @@
 		}
 	}
 
-	$sql = "INSERT INTO lists (name, description, image, audio, video, parent) values('".$_POST['name']."', '".$_POST['description']."', '".$image."', '".$audio."', '".$video."', ".$_POST['parent'].")";
+	$sql = "update lists (name, description, image, audio, video, parent) values('".$_POST['name']."', '".$_POST['description']."', '".$image."', '".$audio."', '".$video."', ".$_POST['parent'].")";
 	mysqli_query($conn, $sql);
 	mysqli_close($conn);
 	header('Location: '."caregiver.html");

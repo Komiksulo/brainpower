@@ -1,1 +1,2 @@
 create table lists (id int AUTO_INCREMENT, name TEXT, description TEXT, image TEXT, audio TEXT, video TEXT, parent INT, PRIMARY KEY (id));
+create table listsEvent (id int AUTO_INCREMENT, listid int, date TEXT, time TEXT, done TEXT, help TEXT, PRIMARY KEY (id));

@@ -28,7 +28,13 @@ var imageId = guid();
 var counter = 0;
 var image;
 function addToList(id){
-	$("#"+id).append("<div>Title</div><div><input type='text' id='name' name='name'></div><div>Description</div><div><textarea name='description' id='description'></textarea></div> <div>Use Camera <input type='button' value='Take Picture' onclick='window.open(\"recordimage.php?id="+imageId+"\", \"_blank\"); isImageDone();'> <span id='imageplaceholder'>No picture</span></div> Upload Image <input type='file' name='image'> </div><input type='hidden' id='hiddenimage' name='hiddenimage'><input type='hidden' name='parent' value='-1'> <div>Upload Video <input type='file' name='video'></div> <div>Upload Audio <input type='file' name='audio'></div>");
+	var parent = -1;
+	<?php
+	if(isset($_GET['parent'])){
+		echo("parent = '".$_GET['parent']."';");
+	}
+	?>
+	$("#"+id).append("<div>Title</div><div><input type='text' id='name' name='name'></div><div>Description</div><div><textarea name='description' id='description'></textarea></div> <div>Use Camera <input type='button' value='Take Picture' onclick='window.open(\"recordimage.php?id="+imageId+"\", \"_blank\"); isImageDone();'> <span id='imageplaceholder'>No picture</span></div> Upload Image <input type='file' name='image'> </div><input type='hidden' id='hiddenimage' name='hiddenimage'><input type='hidden' name='parent' value='"+parent+"'> <div>Upload Video <input type='file' name='video'></div> <div>Upload Audio <input type='file' name='audio'></div>");
 	counter += 1;
 }
 addToList("list0");
