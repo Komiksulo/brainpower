@@ -1,159 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
-	<style>
-		
-		#call{
-			position: fixed;
-			top: 0px;
-			right: 0px;
-		}
-		.slick-slide{
-			border: 4px solid black;
-		}
-		.slick-slide img{
-			max-width: 200px;
-			max-height: 200px;
-			margin: 0px auto;
-		}
-		.sections{
-			font-size: 27px;
-			font-family: sans-serif;
-		}
-		.eventwrapper{
-			height: 400px;
-			text-align: center;
-		}
-		.skype{
-			position: fixed;
-			top: 0px;
-			right: 0px;
-		}
-	</style>
 </head>
 <body>
-<div class="sections" id="sections">
-</div>
-
-
-BrainPower
-
-External Brain
-
-Together
-
-DWS
-
-<div>
-<a href="">Daily Events Calendar</a>
-</div>
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="slick/slick.js"></script>
-
-<script>
-
-function playVideo(){
-	$("#vids").hide();
-	$("#videoWrapper").show();
-	$("#videoplayer").get(0).play();
-}
-
-function stopVideo(){
-	$("#videoWrapper").hide();
-	$("#vids").show();
-	$("#videoplayer").get(0).stop();
-}
- 
-
-function eventDone(eventId){
-	$.get("eventdone.php?id="+eventId);
-	$(".sections").slick("slickNext");
-}
-
-
-$(document).ready(function(){
-
-
- function appendListItem(target, eventId){
- 	$.get("loadscheduledevents.php?id="+eventId, function(data){
- 		var eventInfos = JSON.parse(data);
- 		for(var key in eventInfos){
- 			var eventInfo = eventInfos[key];
-	 		var done = "";
-	 		console.log(eventInfo);
-	 		if(eventInfo.done == null){
-	 			done = "<div><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
-	 		}
-	 		var image = "";
-	 		if(eventInfo.image != ""){
-	 			image = "<img class='image' src='img/"+eventInfo.image+"' alt='"+eventInfo.name+"'>";
-	 		}
-	 		var name = "";
-	 		if(eventInfo.name != ""){
-	 			name = "<div class='eventname'>"+eventInfo.name+"</div>";
-	 		}
-	 		var description = "";
-	 		if(eventInfo.description != ""){
-	 			description = "<div class='eventdescription'>"+eventInfo.description+"</div>";
-	 		}
-	 		var video = "";
-	 		if(eventInfo.video != ""){
-	 			video = '<div id="vids"><input type="button" value="Play Video" onclick="playVideo();"></div><div id="videoWrapper" style="position:absolute; top:0px; left:0px; display:none;"><video id="videoplayer" controls><source src="img/'+eventInfo.video+'" type="video/webm"></video><input style="position:absolute; top:10px; right:10px" type="button" value="Close Video" onclick="stopVideo()"></div>';
-	 		}
-	 		var audio = "";
-	 		if(eventInfo.audio != ""){
-	 			audio = '<video style="height:40px" id="audioplayer" controls><source src="img/'+eventInfo.audio+'" type="audio/webm"></video>';
-	 		}
-	 		var time = "";
-	 		if(eventInfo.time != ""){
-	 			time = eventInfo.time;
-	 		}
-	 		var date = "";
-	 		if(eventInfo.date != ""){
-	 			date = eventInfo.date;
-	 		}
-	 		$("#"+target).append("<div><div class='eventwrapper'>"+name+description+image+"<div class='eventaudio'>"+audio+"</div><div class='eventvideo'>"+video+"</div>"+done+"</div><div class='eventtime'>"+time+"</div><div class='eventdate'>"+date+"</div></div>");
- 		}
- 		
- 		$('.sections').slick({
- 		  draggable: false,
- 		  accessibility: false,
- 		  infinite: false,
-		  centerMode: true,
-		  centerPadding: '60px',
-		  slidesToShow: 3,
-		  responsive: [
-		    {
-		      breakpoint: 768,
-		      settings: {
-		        arrows: false,
-		        centerMode: true,
-		        centerPadding: '40px',
-		        slidesToShow: 3
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		        arrows: false,
-		        centerMode: true,
-		        centerPadding: '40px',
-		        slidesToShow: 1
-		      }
-		    }
-		  ]
-		});
-		//$('.sections').slick("slickGoTo", 2, true);
-
- 	});
- }
-appendListItem("sections", -1);
- 
-  
-});
-</script>
+	<div>
+		BrainPower - Gentle Reminder
+	</div>
+	<div>
+		<a href="client.html">Client Interface</a>
+	</div>
+	<div>
+		<a href="caregiver.html">Caregiver Interface</a>
+	</div>
 </body>
 </html>
