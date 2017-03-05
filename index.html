@@ -67,17 +67,25 @@ function stopVideo(){
 	$("#videoplayer").get(0).stop();
 }
  
+
+function eventDone(eventId){
+	$.get("eventdone.php?id="+eventId);
+	$(".sections").slick("slickNext");
+}
+
+ 
 $(document).ready(function(){
 
 
- function appendListItem(target, eventId, active){
- 	$.get("loadEvent.php?id="+eventId, function(data){
+ function appendListItem(target, eventId){
+ 	$.get("loadscheduledevents.php?id="+eventId, function(data){
  		var eventInfos = JSON.parse(data);
  		for(var key in eventInfos){
  			var eventInfo = eventInfos[key];
 	 		var done = "";
-	 		if(active){
-	 			done = "<div><input type='button' value='done' onclick='$(\".sections\").slick(\"slickNext\");'></div>";
+	 		console.log(eventInfo);
+	 		if(eventInfo.done == null){
+	 			done = "<div><input type='button' value='done' onclick='eventDone(\""+eventInfo.listeventid+"\")'></div>";
 	 		}
 	 		var image = "";
 	 		if(eventInfo.image != ""){
