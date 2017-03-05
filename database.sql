@@ -1,0 +1,1 @@
+create table lists (id int AUTO_INCREMENT, name TEXT, description TEXT, image TEXT, audio TEXT, video TEXT, parent INT, PRIMARY KEY (id));
